@@ -1,0 +1,17 @@
+<ng-container *ngIf="(state$ | async) as currentState; else loading">
+    <hello-world [state]="currentState"></hello-world>
+</ng-container>
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>
+
+<hr>
+
+<app-dynamic-form></app-dynamic-form>
+
+<hr>
+
+<div class="container">
+    <a [routerLink]="['display']" routerLinkActive="active" class="btn">Clicking will initiate the `lazy-loading` of `standalone web components` via Routes</a>
+</div>
+<router-outlet></router-outlet>

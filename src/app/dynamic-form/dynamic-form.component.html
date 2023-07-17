@@ -1,0 +1,28 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" novalidate>
+
+    <div *ngFor="let field of fields">
+      <label>{{ field.username | titlecase }}</label>
+  
+      <input [type]="field.type" [formControlName]="field.username" placeholder="insert value" value="demo@4null.com"/>
+  
+      <div *ngIf="formGroup.get(field.username)?.invalid && formGroup.get(field.username)?.touched">
+        <div *ngIf="formGroup.get(field.username)?.hasError('required')"> {{ field.errorMessage }}</div>
+        <div *ngIf="formGroup.get(field.username)?.hasError('minlength')">{{ field.errorMessage }}</div>
+        <div *ngIf="formGroup.get(field.username)?.hasError('email')">{{ field.errorMessage }}</div>
+      </div>
+
+    </div>
+  
+    <button type="submit" [disabled]="formGroup.invalid">Submit</button>
+  
+</form>
+
+<div *ngIf="successResponse">
+  <h2>Success!</h2>
+  <pre>{{ successResponse | json }}</pre>
+</div>
+
+<div *ngIf="errorResponse">
+  <h2>Fail:</h2>
+  <p>{{ errorResponse | json }}</p>
+</div>

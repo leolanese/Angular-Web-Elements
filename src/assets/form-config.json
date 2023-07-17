@@ -1,0 +1,16 @@
+{
+    "fields": [
+      {
+        "type": "text",
+        "username": "username",
+        "validations": ["required", "minLength3"],
+        "errorMessage": "Name is required and must be at least 3 characters."
+      },
+      {
+        "type": "password",
+        "username": "password",
+        "validations": ["required"],
+        "errorMessage": "password is required"
+      }
+    ]
+  }
