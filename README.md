@@ -262,7 +262,9 @@ UrlSerializerModule (serialize and deserialize URL parameters)
 
 ### 2) lazy-load routes
 
-> Routes will `lazy-load` their `standalone web components` by using the `loadComponent` function
+> Routes will `lazy-load` their `standalone web components` by using the `loadComponent` function (internally loadComponent function returns a promise. This promise resolves to the loaded component when it is ready)
+
+> Angular 16+ also uses: `Lazy-loading feature modules` allows us to `lazy-load entire modules, rather than just individual components`
 
 ```js
 //  lazy loading for children based on routes
@@ -285,27 +287,48 @@ export const APP_ROUTES: Routes = [
                                             .then(r => r.CatsComponent)
 
             },
+            {
+                // also we can use the loadChildren function to lazy-load the feature module
+                loader: 'async',
+                path: './my-feature/my-feature.module',
+            },
+            
 
         ]
     }
 ]
 ```
 
-Now, we can trigger: `ng build` to view the `Initial Chunk files` and Lazy `Chunk Files`:
+Now, we can trigger: `ng build` to view the `Initial Chunk files` + `Lazy Chunk Files` separated:
 
 ```js
 // AOT and Lazy-Loading activated
-Initial Chunk Files           | Names                     |  Raw Size | Estimated Transfer Size
-main.5c3fef7fc8005c6a.js      | main                      | 298.51 kB |                80.41 kB
-polyfills.5de45cff4c15dbb7.js | polyfills                 |  33.03 kB |                10.61 kB
-runtime.973109fa7c19cdcc.js   | runtime                   |   2.65 kB |                 1.24 kB
-styles.ef46db3751d8e999.css   | styles                    |   0 bytes |                       -
+✔ Browser application bundle generation complete.
+✔ Copying assets complete.
+✔ Index html generation complete.
 
-                              | Initial Total             | 334.20 kB |                92.26 kB
+Initial Chunk Files | Names                     |  Raw Size | Estimated Transfer Size
+main.js             | main                      | 296.42 kB |                79.97 kB
+polyfills.js        | polyfills                 |  33.03 kB |                10.61 kB
+runtime.js          | runtime                   |   2.64 kB |                 1.23 kB
+styles.css          | styles                    |   0 bytes |                       -
 
-Lazy Chunk Files              | Names                     |  Raw Size | Estimated Transfer Size
-946.e9a4ce571bbb348b.js       | display-display-component |   1.54 kB |               725 bytes
+                    | Initial Total             | 332.09 kB |                91.80 kB
+
+Lazy Chunk Files    | Names                     |  Raw Size | Estimated Transfer Size
+946.js              | display-display-component |   1.54 kB |               733 bytes
+360.js              | c1-c1-component           | 630 bytes |               389 bytes
+561.js              | c2-c2-component           | 538 bytes |               329 bytes
 ```
+
+### `Preloading Strategies` with standalone applications 
+
+#### Preloading component data
+
+> Preloading improves UX by loading parts of your application in the background. You can preload modules, standalone components or component data.
+
+> We preload component data, using a resolver. Resolvers can improve UX by blocking the page load until all necessary data is available to fully display the page, BUT all the necesary content will be require on `initial page`, so "it may no be suttable for all solutions"
+
 
 ---
 
