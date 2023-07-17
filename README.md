@@ -329,7 +329,6 @@ Lazy Chunk Files    | Names                     |  Raw Size | Estimated Transfer
 
 > We preload component data, using a resolver. Resolvers can improve UX by blocking the page load until all necessary data is available to fully display the page, BUT all the necesary content will be require on `initial page`, so "it may no be suttable for all solutions"
 
-
 ---
 
 ### Before leaving!
