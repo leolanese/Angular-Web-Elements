@@ -1,4 +1,4 @@
-# MyAngularElement - Using Angular Element (Angular going Web Component) + Updated
+# Angular Web Component
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
