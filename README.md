@@ -1,6 +1,37 @@
 # Angular Web Component
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+## Angular Elements
+- The project leverages Angular Elements to package Angular components as custom HTML elements (Web Components). This allows these components to be used in any web application, regardless of the underlying framework (or lack thereof). This is a key point, the main goal is to `have a component that can be reused in any web environment`.
+
+## Standalone Components:
+- The project underline the use of standalone components, a feature introduced in newer Angular versions. This simplifies module management and improves tree-shaking, resulting in smaller bundle sizes. This removes the need of NgModules in many cases.
+
+## Internationalization (i18n):
+- The project demonstrates how to implement i18n in Angular Elements using Angular's built-in i18n features.
+- It covers extracting translation strings, creating translation files, and building localized versions of the application.
+
+## Lazy Loading:
+- The project shows how to lazy-load routes and standalone web components, improving application performance by loading components only when needed.
+- It also shows how to lazy load entire modules.
+
+## Preloading Strategies:
+- The project shows how to preload component data, using resolvers.
+
+## Build and Deployment:
+- It provides instructions on building the Angular Element for production, including generating a single JavaScript file that can be included in any HTML page.
+- It also shows how to build and serve multilingual versions of the application.
+
+## Reverse Proxy:
+- It shows how to configure a reverse proxy using Express and http-proxy-middleware to handle API requests.
+
+## Project Goals:
+- To demonstrate how to create reusable Angular Web Components.
+- To showcase modern Angular features and best practices.
+- To provide a POC for building multilingual Angular Elements.
+- To illustrate how to lazy-load components and modules.
+- To show how to configure a reverse proxy.
+
+---
 
 ## Setup environment
 
